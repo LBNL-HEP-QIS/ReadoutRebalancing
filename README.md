@@ -1,1 +1,5 @@
-# ReadiytRebalancing
+# Readout Rebalancing
+
+Errors are a key challenge for using quantum computers for near term calculations in high energy physics, nuclear physics, chemistry, etc.  There are two types of errors: readout errors and gate errors.  This repository focuses on readout errors: qubits are readout as a 1 (0) when the true state is 0 (1).  We make use of a very simple fact: migrations from 0 to 1 are more rare than migrations from 1 to 0.  The idea is then to apply x gates to the state just before measurement to minimize the total migrations.
+
+To illustrate the idea, imagine the followng 2 qubit example.  With two qubits, there are four possible classical states: 00, 10, 01, and 11. Imagine that you prepare a state that ends up with the following probabilities Pr(00) = 10%, Pr(10) = 10%, Pr(01) = 40%, and Pr(11) = 40%.  The error on the 11 state will be worse than the 00 state and yet the 11 state happens more often.  This can be mitigated by simply adding two x gates so that Pr(11) = 10%, Pr(10) = 10%, Pr(10) = 40%, and Pr(00) = 40%.  This does not change any of the physics, but significantly improves the measurement fidelity.
